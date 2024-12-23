@@ -1,19 +1,22 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-    async setup() {
-        const res = await fetch("http://localhost:8000/dinosaurs") // Fetch from moviedb
-        const dinosaurs = await res.json() as Dinosaur[];
-        return { dinosaurs };
-    }
+	props: { dinosaur: String },
+	data(): ComponentData {
+		return {
+			movieDetails: null,
+		};
+	},
+	async mounted() {
+		const res = await fetch(`http://localhost:8000/dinosaurs/${this.dinosaur}`); // Fetch from MovieDB here
+		this.dinosaurDetails = await res.json();
+	},
 });
 </script>
 
 <template>
-    <div v-for="dinosaur in dinosaurs" :key="dinosaur.name">
-        <RouterLink :to="{ name: 'Dinosaur', params: { dinosaur: `${dinosaur.name.toLowerCase()}` } }" >
-            {{ dinosaur.name }}
-        </RouterLink>
-    </div>
+	<h1>{{ dinosaurDetails?.name }}</h1>
+	<p>{{ dinosaurDetails?.description }}</p>
+	<RouterLink to="/">🠠 Back to all dinosaurs</RouterLink>
 </template>

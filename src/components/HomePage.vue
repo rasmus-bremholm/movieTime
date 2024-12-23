@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Dinosaurs from "./Dinosaurs.vue";
+import Movies from "./Movies.vue";
 </script>
 <template>
-	<h1>Welcome to the Dinosaur App! 🦕</h1>
-	<p>Click on a dinosaur to learn more about them</p>
+	<h1>Movie Time</h1>
 	<Suspense>
 		<template #default>
-			<Dinosaurs />
+			<Movies />
 		</template>
 		<template #fallback>
 			<div>Loading...</div>
