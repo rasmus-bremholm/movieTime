@@ -1,8 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import MovieCard from "./MovieCard.vue";
 
 interface Movie {
 	name: string;
+	id: number;
 	description: string;
 	image: string;
 }
@@ -33,6 +35,7 @@ export default defineComponent({
 				options
 			);
 			this.movies = await res.json();
+			console.log(JSON.parse(JSON.stringify(this.movies)));
 		} catch (error) {
 			console.log("Failed to fetch movies", error);
 		} finally {
@@ -45,5 +48,9 @@ export default defineComponent({
 
 <template>
 	<div v-if="loading">Loading...</div>
-	<div v-else></div>
+	<div v-else>
+		<div class="grid-container">
+			<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+		</div>
+	</div>
 </template>
