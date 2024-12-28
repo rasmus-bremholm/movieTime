@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import MovieCard from "./MovieCard.vue";
+import SkeletonCard from "./skeletons/SkeletonCard.vue";
 
 interface Movie {
 	name: string;
@@ -47,7 +48,7 @@ export default defineComponent({
 </script>
 
 <template>
-	<div v-if="loading">Loading...</div>
+	<div v-if="loading"><SkeletonCard /></div>
 	<div v-else>
 		<div class="grid-container">
 			<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
