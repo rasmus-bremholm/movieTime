@@ -5,4 +5,14 @@ export default defineComponent({
 	name: "MovieCard",
 });
 </script>
-<template></template>
+<template><div class="movieCard"></div></template>
+<style scoped>
+.movieCard {
+	display: flex;
+	height: 370px;
+	width: 245px;
+	overflow: hidden;
+	background-color: #757575;
+	border-radius: 15px;
+}
+</style>

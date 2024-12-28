@@ -8,10 +8,9 @@ export default defineComponent({
 		Movies,
 	},
 });
-
 </script>
+
 <template>
-	<template>
-		<Movies />
-	</template>
+	<h1>Movie Time</h1>
+	<Movies />
 </template>

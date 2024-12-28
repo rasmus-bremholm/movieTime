@@ -38,10 +38,30 @@ export default defineComponent({
 </script>
 
 <template>
-	<div v-if="loading"><SkeletonCard /></div>
-	<div v-else>
-		<div class="grid-container">
-			<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+	<div class="container">
+		<div v-if="loading">
+			<div class="grid-container">
+				<SkeletonCard v-for="n in 20" />
+			</div>
+		</div>
+		<div v-else>
+			<div class="grid-container">
+				<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+			</div>
 		</div>
 	</div>
 </template>
+
+<style scoped>
+.container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(4, 245px);
+	gap: 1rem;
+}
+</style>
