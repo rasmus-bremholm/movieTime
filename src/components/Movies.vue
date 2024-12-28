@@ -7,6 +7,10 @@ import { Movie, MovieApiResponse } from "../types/movieInterfaces";
 
 export default defineComponent({
 	name: "Movies",
+	components: {
+		SkeletonCard,
+		MovieCard,
+	},
 	data() {
 		return {
 			movies: [] as Movie[],
@@ -17,7 +21,6 @@ export default defineComponent({
 	async created() {
 		// Fetch Data here
 		try {
-			console.log(import.meta.env.VITE_READ_ACCESS_TOKEN);
 			const res = await fetch(
 				"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
 				API_OPTIONS

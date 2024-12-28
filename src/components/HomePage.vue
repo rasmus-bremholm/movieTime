@@ -1,14 +1,17 @@
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from "vue";
 import Movies from "./Movies.vue";
+
+export default defineComponent({
+	name: "HomePage",
+	components: {
+		Movies,
+	},
+});
+
 </script>
 <template>
-	<h1>Movie Time</h1>
-	<Suspense>
-		<template #default>
-			<Movies />
-		</template>
-		<template #fallback>
-			<div>Loading...</div>
-		</template>
-	</Suspense>
+	<template>
+		<Movies />
+	</template>
 </template>
