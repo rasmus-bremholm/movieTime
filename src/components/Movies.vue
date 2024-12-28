@@ -41,7 +41,7 @@ export default defineComponent({
 	<div class="container">
 		<div v-if="loading">
 			<div class="grid-container">
-				<SkeletonCard v-for="n in 20" />
+				<SkeletonCard v-for="n in 20" :key="n" />
 			</div>
 		</div>
 		<div v-else>
@@ -62,6 +62,6 @@ export default defineComponent({
 .grid-container {
 	display: grid;
 	grid-template-columns: repeat(4, 245px);
-	gap: 1rem;
+	gap: 2rem;
 }
 </style>
