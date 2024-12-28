@@ -14,7 +14,9 @@ export default defineComponent({
 </script>
 <template>
 	<div class="movieCard">
-		<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="" />
+		<img
+			:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+			:alt="movie.title ? `Poster for ${movie.title}` : 'Movie Poster'" />
 	</div>
 </template>
 <style scoped>
