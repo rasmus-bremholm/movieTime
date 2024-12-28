@@ -2,21 +2,8 @@
 import { defineComponent } from "vue";
 import MovieCard from "./MovieCard.vue";
 import SkeletonCard from "./skeletons/SkeletonCard.vue";
-
-interface Movie {
-	name: string;
-	id: number;
-	description: string;
-	image: string;
-}
-
-const options = {
-	method: "GET",
-	headers: {
-		accept: "application/json",
-		Authorization: `Bearer ${import.meta.env.VITE_READ_ACCESS_TOKEN}`,
-	},
-};
+import { API_OPTIONS } from "../utils/apiOptions";
+import { Movie, MovieApiResponse } from "../types/movieInterfaces";
 
 export default defineComponent({
 	name: "Movies",
@@ -33,10 +20,10 @@ export default defineComponent({
 			console.log(import.meta.env.VITE_READ_ACCESS_TOKEN);
 			const res = await fetch(
 				"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-				options
+				API_OPTIONS
 			);
-			this.movies = await res.json();
-			console.log(JSON.parse(JSON.stringify(this.movies)));
+			const data = (await res.json()) as MovieApiResponse;
+			this.movies = data.results;
 		} catch (error) {
 			console.log("Failed to fetch movies", error);
 		} finally {
