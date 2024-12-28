@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../components/HomePage.vue";
-import Movie from "../components/Movie.vue";
 
 export default createRouter({
 	history: createWebHistory("/"),
@@ -9,12 +8,6 @@ export default createRouter({
 			path: "/",
 			name: "Home",
 			component: HomePage,
-		},
-		{
-			path: "/:movie",
-			name: "Movie",
-			component: Movie,
-			props: true,
 		},
 	],
 });
