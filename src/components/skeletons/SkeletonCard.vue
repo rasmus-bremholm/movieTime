@@ -7,10 +7,10 @@
 	display: flex;
 	height: 370px;
 	width: 245px;
-	padding: 1.25rem; /* 20px */
 	position: relative;
 	overflow: hidden;
 	background-color: #dddbdd;
+	border-radius: 15px;
 }
 
 .skeleton-card::after {

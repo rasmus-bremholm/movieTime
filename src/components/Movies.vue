@@ -1,24 +1,16 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import MovieCard from "./MovieCard.vue";
-
-interface Movie {
-	name: string;
-	id: number;
-	description: string;
-	image: string;
-}
-
-const options = {
-	method: "GET",
-	headers: {
-		accept: "application/json",
-		Authorization: `Bearer ${import.meta.env.VITE_READ_ACCESS_TOKEN}`,
-	},
-};
+import SkeletonCard from "./skeletons/SkeletonCard.vue";
+import { API_OPTIONS } from "../utils/apiOptions";
+import { Movie, MovieApiResponse } from "../types/movieInterfaces";
 
 export default defineComponent({
 	name: "Movies",
+	components: {
+		SkeletonCard,
+		MovieCard,
+	},
 	data() {
 		return {
 			movies: [] as Movie[],
@@ -29,13 +21,12 @@ export default defineComponent({
 	async created() {
 		// Fetch Data here
 		try {
-			console.log(import.meta.env.VITE_READ_ACCESS_TOKEN);
 			const res = await fetch(
 				"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-				options
+				API_OPTIONS
 			);
-			this.movies = await res.json();
-			console.log(JSON.parse(JSON.stringify(this.movies)));
+			const data = (await res.json()) as MovieApiResponse;
+			this.movies = data.results;
 		} catch (error) {
 			console.log("Failed to fetch movies", error);
 		} finally {
@@ -47,10 +38,30 @@ export default defineComponent({
 </script>
 
 <template>
-	<div v-if="loading">Loading...</div>
-	<div v-else>
-		<div class="grid-container">
-			<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+	<div class="container">
+		<div v-if="loading">
+			<div class="grid-container">
+				<SkeletonCard v-for="n in 20" :key="n" />
+			</div>
+		</div>
+		<div v-else>
+			<div class="grid-container">
+				<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+			</div>
 		</div>
 	</div>
 </template>
+
+<style scoped>
+.container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(4, 245px);
+	gap: 2rem;
+}
+</style>
