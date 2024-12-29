@@ -1,6 +1,7 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import { Movie } from "../types/movieInterfaces";
+import { genreMap } from "../utils/genreMap";
 
 export default defineComponent({
 	name: "MovieCard",
@@ -9,6 +10,13 @@ export default defineComponent({
 			type: Object as () => Movie,
 			required: true,
 		},
+	},
+	setup(props) {
+		const mappedGenres = computed(() =>
+			props.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
+		);
+
+		return { mappedGenres };
 	},
 });
 </script>
@@ -19,7 +27,7 @@ export default defineComponent({
 			:alt="movie.title ? `Poster for ${movie.title}` : 'Movie Poster'" />
 		<div class="movieCardDetails">
 			<p>{{ movie.vote_average }}</p>
-			<p>{{ movie.genre_ids }}</p>
+			<p>{{ mappedGenres }}</p>
 			<h3>{{ movie.title }}</h3>
 			<p>{{ movie.overview }}</p>
 		</div>
