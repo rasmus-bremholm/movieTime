@@ -51,10 +51,20 @@ export default defineComponent({
 	bottom: 0;
 	left: 0;
 	right: 0;
+	height: 70%;
 	background-color: rgba(0, 0, 0, 0.8);
 	padding: 1rem; /* 16px */
 	transform: translateY(100%);
 	transition: transform 0.2s ease;
+}
+.movieCardDetails p {
+	font-size: 0.9rem;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
 }
 
 .movieCard:hover .movieCardDetails {
