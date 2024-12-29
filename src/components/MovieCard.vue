@@ -1,6 +1,7 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import { Movie } from "../types/movieInterfaces";
+import { genreMap } from "../utils/genreMap";
 
 export default defineComponent({
 	name: "MovieCard",
@@ -9,6 +10,13 @@ export default defineComponent({
 			type: Object as () => Movie,
 			required: true,
 		},
+	},
+	setup(props) {
+		const mappedGenres = computed(() =>
+			props.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
+		);
+
+		return { mappedGenres };
 	},
 });
 </script>
@@ -19,7 +27,7 @@ export default defineComponent({
 			:alt="movie.title ? `Poster for ${movie.title}` : 'Movie Poster'" />
 		<div class="movieCardDetails">
 			<p>{{ movie.vote_average }}</p>
-			<p>{{ movie.genre_ids }}</p>
+			<p>{{ mappedGenres }}</p>
 			<h3>{{ movie.title }}</h3>
 			<p>{{ movie.overview }}</p>
 		</div>
@@ -32,13 +40,13 @@ export default defineComponent({
 	width: 245px;
 	overflow: hidden;
 	background-color: #757575;
-	border-radius: 15px;
+	border-radius: var(--card-border-radius);
 }
 
 .movieCard img {
 	display: block;
 	width: 100%;
-	border-radius: 15px;
+	border-radius: var(--card-border-radius);
 	transition: transform 0.3s ease;
 }
 
@@ -52,7 +60,7 @@ export default defineComponent({
 	left: 0;
 	right: 0;
 	height: 70%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: var(--card-details-back);
 	padding: 1rem; /* 16px */
 	transform: translateY(100%);
 	transition: transform 0.2s ease;
@@ -62,6 +70,7 @@ export default defineComponent({
 	line-height: 1.4;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-clamp: 4;
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
