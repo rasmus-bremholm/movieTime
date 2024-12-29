@@ -2,6 +2,7 @@
 import { computed, defineComponent } from "vue";
 import { Movie } from "../types/movieInterfaces";
 import { genreMap } from "../utils/genreMap";
+import { formatRating } from "../utils/ratingFormat";
 
 export default defineComponent({
 	name: "MovieCard",
@@ -12,11 +13,13 @@ export default defineComponent({
 		},
 	},
 	setup(props) {
+		const formattedRating = formatRating(props.movie.vote_average);
+
 		const mappedGenres = computed(() =>
 			props.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
 		);
 
-		return { mappedGenres };
+		return { mappedGenres, formattedRating };
 	},
 });
 </script>
@@ -26,10 +29,14 @@ export default defineComponent({
 			:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
 			:alt="movie.title ? `Poster for ${movie.title}` : 'Movie Poster'" />
 		<div class="movieCardDetails">
-			<p>{{ movie.vote_average }}</p>
-			<p>{{ mappedGenres }}</p>
-			<h3>{{ movie.title }}</h3>
-			<p>{{ movie.overview }}</p>
+			<div class="cardDetailsRatings">
+				<p><span class="material-symbols-outlined"> star </span>{{ formattedRating }}</p>
+				<p>{{ mappedGenres }}</p>
+			</div>
+			<div class="cardDetailsText">
+				<h3>{{ movie.title }}</h3>
+				<p>{{ movie.overview }}</p>
+			</div>
 		</div>
 	</div>
 </template>
@@ -39,7 +46,7 @@ export default defineComponent({
 	height: 370px;
 	width: 245px;
 	overflow: hidden;
-	background-color: #757575;
+
 	border-radius: var(--card-border-radius);
 }
 
@@ -64,10 +71,29 @@ export default defineComponent({
 	padding: 1rem; /* 16px */
 	transform: translateY(100%);
 	transition: transform 0.2s ease;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.cardDetailsRatings {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.cardDetailsRatings p {
+	font-size: 12px;
+}
+
+.cardDetailsText h3 {
+	padding-bottom: 0.5rem;
 }
 .movieCardDetails p {
-	font-size: 0.9rem;
-	line-height: 1.4;
+	font-size: 0.75rem;
+	line-height: 1.6;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	line-clamp: 4;
