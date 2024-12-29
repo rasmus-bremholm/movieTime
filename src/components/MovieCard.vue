@@ -17,15 +17,57 @@ export default defineComponent({
 		<img
 			:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
 			:alt="movie.title ? `Poster for ${movie.title}` : 'Movie Poster'" />
+		<div class="movieCardDetails">
+			<p>{{ movie.vote_average }}</p>
+			<p>{{ movie.genre_ids }}</p>
+			<h3>{{ movie.title }}</h3>
+			<p>{{ movie.overview }}</p>
+		</div>
 	</div>
 </template>
 <style scoped>
 .movieCard {
-	display: flex;
+	position: relative;
 	height: 370px;
 	width: 245px;
 	overflow: hidden;
 	background-color: #757575;
 	border-radius: 15px;
+}
+
+.movieCard img {
+	display: block;
+	width: 100%;
+	border-radius: 15px;
+	transition: transform 0.3s ease;
+}
+
+.movieCard:hover img {
+	transform: scale(1.1);
+}
+
+.movieCardDetails {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 70%;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 1rem; /* 16px */
+	transform: translateY(100%);
+	transition: transform 0.2s ease;
+}
+.movieCardDetails p {
+	font-size: 0.9rem;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+
+.movieCard:hover .movieCardDetails {
+	transform: translateY(0);
 }
 </style>

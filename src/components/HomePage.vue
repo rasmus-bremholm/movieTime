@@ -11,6 +11,7 @@ export default defineComponent({
 </script>
 
 <template>
+	<p>Version: 0.0.2 2024</p>
 	<h1>Movie Time</h1>
 	<Movies />
 </template>
