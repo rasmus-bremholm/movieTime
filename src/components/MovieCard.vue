@@ -70,6 +70,7 @@ export default defineComponent({
 	line-height: 1.4;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-clamp: 4;
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
