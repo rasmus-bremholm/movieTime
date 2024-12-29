@@ -40,13 +40,13 @@ export default defineComponent({
 	width: 245px;
 	overflow: hidden;
 	background-color: #757575;
-	border-radius: 15px;
+	border-radius: var(--card-border-radius);
 }
 
 .movieCard img {
 	display: block;
 	width: 100%;
-	border-radius: 15px;
+	border-radius: var(--card-border-radius);
 	transition: transform 0.3s ease;
 }
 
@@ -60,7 +60,7 @@ export default defineComponent({
 	left: 0;
 	right: 0;
 	height: 70%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: var(--card-details-back);
 	padding: 1rem; /* 16px */
 	transform: translateY(100%);
 	transition: transform 0.2s ease;
