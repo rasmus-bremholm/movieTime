@@ -9,7 +9,12 @@ export default defineComponent({
 	<nav>
 		<div class="navbar-content">
 			<p>Version: 0.0.4 2024</p>
-			<h1>Movie Time</h1>
+			<p>Logo</p>
+			<p>Popular Movies</p>
+			<p>My List</p>
+			<div>
+				<span class="material-symbols-outlined"> search </span><input type="search" name="" id="" />
+			</div>
 		</div>
 	</nav>
 </template>
