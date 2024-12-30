@@ -15,6 +15,7 @@ export default defineComponent({
 		return {
 			movies: [] as Movie[],
 			loading: true,
+			error: false,
 		};
 	},
 
@@ -29,6 +30,7 @@ export default defineComponent({
 			this.movies = data.results;
 		} catch (error) {
 			console.log("Failed to fetch movies", error);
+			this.error = true;
 		} finally {
 			this.loading = false;
 			// Finally set loading state to false.
@@ -44,6 +46,9 @@ export default defineComponent({
 				<SkeletonCard v-for="n in 20" :key="n" />
 			</div>
 		</div>
+		<div v-if="error">
+			<p>Failed to load Movies. Please try again later.</p>
+		</div>
 		<div v-else>
 			<div class="grid-container">
 				<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -56,12 +61,11 @@ export default defineComponent({
 .container {
 	display: flex;
 	justify-content: center;
-	width: 100%;
 }
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(4, 245px);
+	grid-template-columns: repeat(4, 246px);
 	gap: 2rem;
 }
 </style>
