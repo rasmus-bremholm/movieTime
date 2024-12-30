@@ -61,12 +61,11 @@ export default defineComponent({
 .container {
 	display: flex;
 	justify-content: center;
-	width: 100%;
 }
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(4, 245px);
+	grid-template-columns: repeat(4, 246px);
 	gap: 2rem;
 }
 </style>
