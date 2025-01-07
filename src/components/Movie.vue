@@ -1,11 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import MovieCard from "./MovieCard.vue";
 
 export default defineComponent({
 	name: "Movie",
-    components: {
-        
-    }
+	components: {},
 });
 </script>
+<template>
+	<p>{{ $route.params.id }}</p>
+</template>
+<style></style>
