@@ -51,7 +51,9 @@ export default defineComponent({
 		</div>
 		<div v-else>
 			<div class="grid-container">
-				<MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+				<a v-bind:href="movie.id" v-for="movie in movies" :key="movie.id"
+					><MovieCard :movie="movie"
+				/></a>
 			</div>
 		</div>
 	</div>
