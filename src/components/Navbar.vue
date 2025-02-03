@@ -12,7 +12,7 @@ export default defineComponent({
 			<p>Logo</p>
 			<p>Popular Movies</p>
 			<p>My List</p>
-			<div>
+			<div id="searchBar">
 				<span class="material-symbols-outlined"> search </span><input type="search" name="" id="" />
 			</div>
 		</div>
@@ -26,5 +26,11 @@ export default defineComponent({
 	grid-template-columns: repeat(5, minmax(0, 1fr));
 	align-items: center;
 	justify-items: center;
+}
+
+#searchBar {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
 }
 </style>

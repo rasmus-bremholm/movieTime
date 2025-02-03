@@ -21,10 +21,7 @@ export default defineComponent({
 
 <style scoped>
 .container-paddings {
-	max-width: 1280px;
-	padding-left: 10rem;
-	padding-right: 10rem;
-	margin: 0 auto;
-	min-height: 100svh;
+	display: flex;
+	justify-content: center;
 }
 </style>

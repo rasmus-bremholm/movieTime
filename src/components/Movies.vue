@@ -34,6 +34,7 @@ export default defineComponent({
 		} finally {
 			this.loading = false;
 			// Finally set loading state to false.
+			console.log(this.movies);
 		}
 	},
 });
@@ -51,7 +52,7 @@ export default defineComponent({
 		</div>
 		<div v-else>
 			<div class="grid-container">
-				<router-link to="/movies/movie.id" v-for="movie in movies" :key="movie.id"
+				<router-link v-for="movie in movies" :key="movie.id" :to="`/movies/${movie.id}`"
 					><MovieCard :movie="movie"
 				/></router-link>
 			</div>
