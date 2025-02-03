@@ -20,7 +20,7 @@ export default defineComponent({
 	},
 
 	async created() {
-		// Fetch Data here
+		// Fetch Data here, change to Axios
 		try {
 			const res = await fetch(
 				"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
@@ -51,9 +51,9 @@ export default defineComponent({
 		</div>
 		<div v-else>
 			<div class="grid-container">
-				<a v-bind:href="movie.id" v-for="movie in movies" :key="movie.id"
+				<router-link to="/movies/movie.id" v-for="movie in movies" :key="movie.id"
 					><MovieCard :movie="movie"
-				/></a>
+				/></router-link>
 			</div>
 		</div>
 	</div>
