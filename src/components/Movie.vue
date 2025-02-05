@@ -63,8 +63,20 @@ export default defineComponent({
 					<button>Köp Biljett</button>
 				</div>
 				<div id="movie-info-container">
-					<h3>{{ movie.title }}</h3>
-					<p>{{ movie.original_title }}</p>
+					<h3>{{ movie.original_title }}</h3>
+					<p>{{ movie.tagline }}</p>
+					<div>
+						<div>
+							<h4>Info</h4>
+						</div>
+						<div>
+							<h4>Skådespelare</h4>
+						</div>
+					</div>
+					<div>
+						<h4>Story</h4>
+						<p>{{ movie.overview }}</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -100,6 +112,18 @@ export default defineComponent({
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+#movie-details {
+	display: grid;
+	grid-template-columns: auto 2fr;
+	grid-template-rows: 1fr;
+}
+#movie-info-container {
+	padding: 1rem;
+}
+#movie-poster-container {
+	display: flex;
+	flex-direction: column;
 }
 #paddings {
 	display: flex;
