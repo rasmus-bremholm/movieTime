@@ -10,11 +10,21 @@ export default defineComponent({
 		<div class="navbar-content">
 			<p>Version: 0.0.4 2024</p>
 			<p>Logo</p>
-			<p>Popular Movies</p>
-			<p>My List</p>
+			<router-link to="/"><li>Upptäck</li></router-link>
+			<router-link to="/"><li>Bioklubben</li></router-link>
+			<div id="loginSection">
+				<router-link to="/"
+					><li id="login">
+						Logga in<span class="material-symbols-outlined"> person </span>
+					</li></router-link
+				>
+				<router-link to="/"><li>Stad</li></router-link>
+			</div>
+			<!--
 			<div id="searchBar">
 				<span class="material-symbols-outlined"> search </span><input type="search" name="" id="" />
 			</div>
+			-->
 		</div>
 	</nav>
 </template>
@@ -32,5 +42,17 @@ export default defineComponent({
 	display: flex;
 	gap: 1rem;
 	align-items: center;
+}
+#loginSection {
+	display: flex;
+	gap: 1rem;
+}
+a {
+	display: contents;
+}
+li {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 </style>

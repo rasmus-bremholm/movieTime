@@ -22,6 +22,7 @@
 
 a {
 	text-decoration: inherit;
+	color: var(--text-color);
 }
 
 body {
@@ -35,6 +36,9 @@ body {
 h1 {
 	font-size: 3rem;
 	line-height: 1.1;
+}
+li {
+	list-style: none;
 }
 
 #app {

@@ -39,14 +39,22 @@ export default defineComponent({
 			</div>
 		</div>
 	</div>
+	<div>
+		<h3>{{ movie.title }}</h3>
+	</div>
 </template>
 <style scoped>
+h3 {
+	color: white;
+	font-size: 16px;
+	margin-left: 0.5rem;
+}
 .movieCard {
 	position: relative;
 	height: 370px;
 	width: 245px;
 	overflow: hidden;
-
+	color: hsl(0, 0%, 80%);
 	border-radius: var(--card-border-radius);
 }
 
@@ -90,6 +98,7 @@ export default defineComponent({
 
 .cardDetailsText h3 {
 	padding-bottom: 0.5rem;
+	margin-left: 0;
 }
 .movieCardDetails p {
 	font-size: 0.75rem;
