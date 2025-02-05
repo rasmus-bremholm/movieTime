@@ -1,25 +1,33 @@
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { Movie } from "../types/movieInterfaces";
 import { genreMap } from "../utils/genreMap";
 import { formatRating } from "../utils/ratingFormat";
 
 export default defineComponent({
-	name: "MovieCard",
+	name: "Movie",
 	props: {
 		movie: {
 			type: Object as () => Movie,
 			required: true,
 		},
 	},
-	setup(props) {
-		const formattedRating = formatRating(props.movie.vote_average);
-
-		const mappedGenres = computed(() =>
-			props.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
-		);
-
-		return { mappedGenres, formattedRating };
+	data() {
+		return { formattedRating: "" };
+	},
+	computed: {
+		//Mappar genre-IDs till genre-namn
+		mappedGenres(): string {
+			return this.movie.genre_ids
+				? this.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
+				: "Okänd";
+		},
+	},
+	methods: {
+		//Formatterar betyget HJÄLP varför funkar detta inte
+		formatRating() {
+			this.formattedRating = formatRating(this.movie.vote_average);
+		},
 	},
 });
 </script>

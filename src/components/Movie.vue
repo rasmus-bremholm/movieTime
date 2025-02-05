@@ -29,10 +29,13 @@ export default defineComponent({
 		}
 	},
 	computed: {
-		formatUrl(): string {
-			return this.movie.backdrop_path
-				? `https://image.tmdb.org/t/p/w1280${this.movie.backdrop_path}`
-				: "";
+		formatTitle(): string {
+			/*Om filmtitlen är för lång (såg ett exempel) så kortar vi ner den här.*/
+			if (this.movie.title && this.movie.title.length > 20) {
+				return this.movie.title.slice(0, 20) + "...";
+			} else {
+				return this.movie.title;
+			}
 		},
 	},
 });
