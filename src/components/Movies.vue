@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 import MovieCard from "./MovieCard.vue";
 import SkeletonCard from "./skeletons/SkeletonCard.vue";
 import { API_OPTIONS } from "../utils/apiOptions";
+import axios from "axios";
 import { Movie, MovieApiResponse } from "../types/movieInterfaces";
 
 export default defineComponent({
@@ -22,12 +23,11 @@ export default defineComponent({
 	async created() {
 		// Fetch Data here, change to Axios
 		try {
-			const res = await fetch(
+			const res = await axios.get<MovieApiResponse>(
 				"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
 				API_OPTIONS
 			);
-			const data = (await res.json()) as MovieApiResponse;
-			this.movies = data.results;
+			this.movies = res.data.results;
 		} catch (error) {
 			console.log("Failed to fetch movies", error);
 			this.error = true;

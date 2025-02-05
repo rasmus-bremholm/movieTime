@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { API_OPTIONS } from "../utils/apiOptions";
+import axios from "axios";
 import { Movie } from "../types/movieInterfaces";
 import Navbar from "./Navbar.vue";
 
@@ -14,12 +15,11 @@ export default defineComponent({
 	},
 	async created() {
 		try {
-			const res = await fetch(
+			const res = await axios.get<Movie>(
 				`https://api.themoviedb.org/3/movie/${this.movieId}?language=en-US`,
 				API_OPTIONS
 			);
-			const data = (await res.json()) as Movie;
-			this.movie = data;
+			this.movie = res.data;
 		} catch (error) {
 			console.log("Failed to fetch movie", error);
 			this.error = true;
