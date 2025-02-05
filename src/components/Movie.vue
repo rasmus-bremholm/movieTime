@@ -28,6 +28,13 @@ export default defineComponent({
 			console.log(this.movie);
 		}
 	},
+	computed: {
+		formatUrl(): string {
+			return this.movie.backdrop_path
+				? `https://image.tmdb.org/t/p/w1280${this.movie.backdrop_path}`
+				: "";
+		},
+	},
 });
 </script>
 <template>
@@ -36,7 +43,7 @@ export default defineComponent({
 		<img
 			id="backdrop-image"
 			:src="`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`"
-			alt="" />
+			alt="Movie Backdrop" />
 	</div>
 
 	<div id="movie-contents">
@@ -47,10 +54,15 @@ export default defineComponent({
 			<div id="movie-details">
 				<div id="movie-poster-container">
 					<img
-						:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+						id="posterImg"
+						:src="`https://image.tmdb.org/t/p/w200${movie.poster_path}`"
 						:alt="`Poster for ${movie.title}`" />
+					<button>Köp Biljett</button>
 				</div>
-				<div id="movie-info-container"></div>
+				<div id="movie-info-container">
+					<h3>{{ movie.title }}</h3>
+					<p>{{ movie.original_title }}</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -93,5 +105,9 @@ export default defineComponent({
 	align-items: center;
 	height: 100svh;
 	max-width: 1200px;
+}
+
+#posterImg {
+	width: 200px;
 }
 </style>

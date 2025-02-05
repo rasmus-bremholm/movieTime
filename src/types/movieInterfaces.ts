@@ -9,6 +9,7 @@ export interface Movie {
 	id: number | string;
 	title: string;
 	overview: string;
+	tagline: string;
 	poster_path: string;
 	backdrop_path: string;
 	release_date: string;
@@ -18,4 +19,5 @@ export interface Movie {
 	original_title: string;
 	popularity: number;
 	vote_average: number;
+	revenue: number;
 }
