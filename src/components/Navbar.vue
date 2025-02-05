@@ -3,6 +3,9 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
 	name: "Navbar",
+	data() {
+		return { city: null };
+	},
 });
 </script>
 <template>
@@ -54,5 +57,13 @@ li {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+}
+#login {
+	border: 1px solid white;
+	padding: 4px 16px;
+	border-radius: 16px;
+}
+#login:hover {
+	border: 1px solid hsl(0, 0%, 60%);
 }
 </style>

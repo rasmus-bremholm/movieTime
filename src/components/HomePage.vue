@@ -15,13 +15,17 @@ export default defineComponent({
 <template>
 	<Navbar />
 	<div class="container-paddings">
+
+
 		<Movies />
 	</div>
 </template>
 
 <style scoped>
+
 .container-paddings {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 </style>
