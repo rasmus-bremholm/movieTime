@@ -5,7 +5,7 @@
 
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+	background-color: rgba(0, 0, 0, 1);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -22,6 +22,11 @@
 
 a {
 	text-decoration: inherit;
+	color: var(--text-color);
+}
+
+a:hover {
+	color: hsl(0, 0%, 60%);
 }
 
 body {
@@ -35,6 +40,9 @@ body {
 h1 {
 	font-size: 3rem;
 	line-height: 1.1;
+}
+li {
+	list-style: none;
 }
 
 #app {

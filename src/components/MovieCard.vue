@@ -1,25 +1,33 @@
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { Movie } from "../types/movieInterfaces";
 import { genreMap } from "../utils/genreMap";
 import { formatRating } from "../utils/ratingFormat";
 
 export default defineComponent({
-	name: "MovieCard",
+	name: "Movie",
 	props: {
 		movie: {
 			type: Object as () => Movie,
 			required: true,
 		},
 	},
-	setup(props) {
-		const formattedRating = formatRating(props.movie.vote_average);
-
-		const mappedGenres = computed(() =>
-			props.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
-		);
-
-		return { mappedGenres, formattedRating };
+	data() {
+		return { formattedRating: "" };
+	},
+	computed: {
+		//Mappar genre-IDs till genre-namn
+		mappedGenres(): string {
+			return this.movie.genre_ids
+				? this.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
+				: "Okänd";
+		},
+	},
+	methods: {
+		//Formatterar betyget HJÄLP varför funkar detta inte
+		formatRating() {
+			this.formattedRating = formatRating(this.movie.vote_average);
+		},
 	},
 });
 </script>
@@ -39,14 +47,22 @@ export default defineComponent({
 			</div>
 		</div>
 	</div>
+	<div>
+		<h3>{{ movie.title }}</h3>
+	</div>
 </template>
 <style scoped>
+h3 {
+	color: white;
+	font-size: 16px;
+	margin-left: 0.5rem;
+}
 .movieCard {
 	position: relative;
 	height: 370px;
 	width: 245px;
 	overflow: hidden;
-
+	color: hsl(0, 0%, 80%);
 	border-radius: var(--card-border-radius);
 }
 
@@ -90,6 +106,7 @@ export default defineComponent({
 
 .cardDetailsText h3 {
 	padding-bottom: 0.5rem;
+	margin-left: 0;
 }
 .movieCardDetails p {
 	font-size: 0.75rem;
