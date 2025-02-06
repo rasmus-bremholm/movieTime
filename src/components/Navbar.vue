@@ -14,7 +14,7 @@ export default defineComponent({
 			<p>Version: 0.0.4 2024</p>
 			<p>Logo</p>
 			<router-link to="/"><li>Upptäck</li></router-link>
-			<router-link to="/"><li>Bioklubben</li></router-link>
+			<router-link to="/bioklubben"><li>Bioklubben</li></router-link>
 			<div id="loginSection">
 				<router-link to="/"
 					><li id="login">
