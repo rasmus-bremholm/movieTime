@@ -34,7 +34,7 @@ export default defineComponent({
 		} finally {
 			this.loading = false;
 			// Finally set loading state to false.
-			console.log(this.movies);
+			//console.log(this.movies);
 		}
 	},
 });

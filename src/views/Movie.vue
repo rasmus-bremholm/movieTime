@@ -11,7 +11,14 @@ export default defineComponent({
 	name: "Movie",
 	components: { Navbar },
 	data() {
-		return { movie: {} as Movie, loading: true, error: false, movieId: this.$route.params.id };
+		return {
+			movie: {} as Movie,
+			loading: true,
+			error: false,
+			movieId: this.$route.params.id,
+			posterPath: "",
+			backdropPath: "",
+		};
 	},
 	async created() {
 		try {
@@ -20,6 +27,9 @@ export default defineComponent({
 				API_OPTIONS
 			);
 			this.movie = res.data;
+			// Börjar lösa poster problemet
+			this.posterPath = this.movie.poster_path;
+			this.backdropPath = this.movie.backdrop_path;
 		} catch (error) {
 			console.log("Failed to fetch movie", error);
 			this.error = true;
@@ -29,6 +39,8 @@ export default defineComponent({
 		}
 	},
 	computed: {
+		// Ska vi justera poster path här i en funktion??
+
 		formatTitle(): string {
 			/*Om filmtitlen är för lång (såg ett exempel) så kortar vi ner den här.*/
 			if (this.movie.title && this.movie.title.length > 20) {
@@ -45,8 +57,8 @@ export default defineComponent({
 	<div id="backdrop-container">
 		<img
 			id="backdrop-image"
-			:src="`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`"
-			alt="Movie Backdrop" />
+			:src="`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`"
+			alt="" />
 	</div>
 
 	<div id="movie-contents">
@@ -58,7 +70,7 @@ export default defineComponent({
 				<div id="movie-poster-container">
 					<img
 						id="posterImg"
-						:src="`https://image.tmdb.org/t/p/w200${movie.poster_path}`"
+						:src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
 						:alt="`Poster for ${movie.title}`" />
 					<button>Köp Biljett</button>
 				</div>
