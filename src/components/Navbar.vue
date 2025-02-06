@@ -16,7 +16,7 @@ export default defineComponent({
 			<router-link to="/"><li>Upptäck</li></router-link>
 			<router-link to="/bioklubben"><li>Bioklubben</li></router-link>
 			<div id="loginSection">
-				<router-link to="/"
+				<router-link to="/login"
 					><li id="login">
 						Logga in<span class="material-symbols-outlined"> person </span>
 					</li></router-link

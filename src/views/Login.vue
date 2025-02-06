@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import Navbar from "../components/Navbar.vue";
 
 export default defineComponent({
-	name: "Bioklubben",
+	name: "Login",
 	components: {
 		Navbar,
 	},
@@ -11,6 +11,6 @@ export default defineComponent({
 </script>
 <template>
 	<Navbar />
-	<p>Bioklubben</p>
+	<p>Login</p>
 </template>
 <style scoped></style>
