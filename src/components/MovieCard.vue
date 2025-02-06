@@ -22,11 +22,8 @@ export default defineComponent({
 				? this.movie.genre_ids.map((id) => genreMap[id] || "Unknown").join(", ")
 				: "Okänd";
 		},
-	},
-	methods: {
-		//Formatterar betyget HJÄLP varför funkar detta inte
-		formatRating() {
-			this.formattedRating = formatRating(this.movie.vote_average);
+		formatRating(): string {
+			return (this.formattedRating = formatRating(this.movie.vote_average));
 		},
 	},
 });
@@ -38,7 +35,7 @@ export default defineComponent({
 			:alt="movie.title ? `Poster for ${movie.title}` : 'Movie Poster'" />
 		<div class="movieCardDetails">
 			<div class="cardDetailsRatings">
-				<p><span class="material-symbols-outlined"> star </span>{{ formattedRating }}</p>
+				<p><span class="material-symbols-outlined"> star </span>{{ formatRating }}</p>
 				<p>{{ mappedGenres }}</p>
 			</div>
 			<div class="cardDetailsText">
