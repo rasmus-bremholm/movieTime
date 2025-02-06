@@ -11,6 +11,9 @@ export default defineComponent({
 </script>
 <template>
 	<Navbar />
-	<p>Bioklubben</p>
+	<main>
+		<h1>Välkommen till BioKlubben!</h1>
+		<p>Om du älskar filmer och att gå på bio</p>
+	</main>
 </template>
 <style scoped></style>

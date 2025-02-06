@@ -56,6 +56,7 @@ export default defineComponent({
 	<Navbar />
 	<div id="backdrop-container">
 		<img
+			v-if="!loading"
 			id="backdrop-image"
 			:src="`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`"
 			alt="" />
@@ -69,6 +70,7 @@ export default defineComponent({
 			<div id="movie-details">
 				<div id="movie-poster-container">
 					<img
+						v-if="!loading"
 						id="posterImg"
 						:src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
 						:alt="`Poster for ${movie.title}`" />

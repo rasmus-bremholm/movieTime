@@ -15,8 +15,6 @@ export default defineComponent({
 <template>
 	<Navbar />
 	<div class="container-paddings">
-
-
 		<Movies />
 	</div>
 </template>
