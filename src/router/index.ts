@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "../components/HomePage.vue";
-import Movie from "../components/Movie.vue";
+import HomePage from "../views/HomePage.vue";
+import Movie from "../views/Movie.vue";
 
 export default createRouter({
 	history: createWebHistory("/"),
