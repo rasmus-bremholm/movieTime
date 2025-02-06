@@ -1,8 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import City from "./City.vue";
 
 export default defineComponent({
 	name: "Navbar",
+	components: {
+		City,
+	},
 	data() {
 		return { city: null };
 	},
@@ -23,11 +27,6 @@ export default defineComponent({
 				>
 				<router-link to="/"><li>Stad</li></router-link>
 			</div>
-			<!--
-			<div id="searchBar">
-				<span class="material-symbols-outlined"> search </span><input type="search" name="" id="" />
-			</div>
-			-->
 		</div>
 	</nav>
 </template>

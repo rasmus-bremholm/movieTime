@@ -24,7 +24,7 @@ export default defineComponent({
 		// Fetch Data here, change to Axios
 		try {
 			const res = await axios.get<MovieApiResponse>(
-				"https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+				"https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
 				API_OPTIONS
 			);
 			this.movies = res.data.results;
