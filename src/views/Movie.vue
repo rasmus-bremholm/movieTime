@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { API_OPTIONS } from "../utils/apiOptions";
 import axios from "axios";
 import { Movie } from "../types/movieInterfaces";
-import Navbar from "./Navbar.vue";
+import Navbar from "../components/Navbar.vue";
 
 // const url = 'https://api.themoviedb.org/3/movie/movie_id?language=en-US';
 
