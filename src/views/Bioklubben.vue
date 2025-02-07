@@ -8,23 +8,23 @@ export default defineComponent({
 		Navbar,
 	},
 	data() {
-		return { fornamn: "", efternamn: "", email: "", password: "", disabeled: true };
+		return { form: { fornamn: "", efternamn: "", email: "", password: "" }, disabeled: true };
 	},
 	watch: {
-		fornamn() {
-			if (this.fornamn === "" || this.fornamn === null) {
+		form() {
+			console.log(this.form.fornamn);
+			if (
+				this.form.fornamn === "" ||
+				this.form.efternamn === "" ||
+				this.form.email === "" ||
+				this.form.password === ""
+			) {
 				this.disabeled = true;
 			} else {
 				this.disabeled = false;
 			}
 		},
-		efternamn() {
-			if (this.efternamn === "" || this.efternamn === null) {
-				this.disabeled = true;
-			} else {
-				this.disabeled = false;
-			}
-		},
+		deep: true,
 	},
 });
 </script>
