@@ -11,20 +11,25 @@ export default defineComponent({
 		return { form: { fornamn: "", efternamn: "", email: "", password: "" }, disabeled: true };
 	},
 	watch: {
-		form() {
-			console.log(this.form.fornamn);
-			if (
-				this.form.fornamn === "" ||
-				this.form.efternamn === "" ||
-				this.form.email === "" ||
-				this.form.password === ""
-			) {
-				this.disabeled = true;
-			} else {
-				this.disabeled = false;
-			}
+		form: {
+			// Hittade detta på stackoverflow, inte säker på varför den används.
+			handler(newValue) {
+				// Hatar regex. Fråga mig inte hur den funkar. Men den kollar email iaf.
+				this.disabeled =
+					!newValue.fornamn ||
+					!newValue.efternamn ||
+					!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newValue.email) ||
+					newValue.password.length < 5;
+			},
+			// Denna kollar tydligen I objektet ifall det funkar. Därför det gamla sättet sket sig.
+			deep: true,
 		},
-		deep: true,
+	},
+	methods: {
+		handleSubmit(event: Event) {
+			event.preventDefault();
+			console.log("Sudmitted");
+		},
 	},
 });
 </script>
@@ -53,13 +58,19 @@ export default defineComponent({
 				<h2>Registrera dig som medlem.</h2>
 				<form>
 					<label for="fornamn">Förnamn</label>
-					<input id="fornamn" type="text" v-model="fornamn" /><label for="fornamn">Efternamn</label
-					><input id="efternamn" type="text" v-model="efternamn" />
+					<input id="fornamn" type="text" v-model="form.fornamn" /><label for="fornamn"
+						>Efternamn</label
+					><input id="efternamn" type="text" v-model="form.efternamn" />
 					<label for="fornamn">Epost</label>
-					<input id="email" type="email" v-model="email" />
+					<input id="email" type="email" v-model="form.email" />
 					<label id="losenord" for="fornamn">Lösenord</label>
-					<input id="losenord" type="password" v-model="password" />
-					<input id="submit" type="submit" value="Registrera" :disabled="disabeled" />
+					<input id="losenord" type="password" v-model="form.password" />
+					<input
+						id="submit"
+						type="submit"
+						value="Registrera"
+						:disabled="disabeled"
+						@submit="handleSubmit" />
 				</form>
 			</div>
 		</div>
