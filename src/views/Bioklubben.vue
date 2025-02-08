@@ -58,13 +58,14 @@ export default defineComponent({
 				<h2>Registrera dig som medlem.</h2>
 				<form>
 					<label for="fornamn">Förnamn</label>
-					<input id="fornamn" type="text" v-model="form.fornamn" /><label for="fornamn"
+					<input placeholder="Förnamn" id="fornamn" type="text" v-model="form.fornamn" /><label
+						for="efternamn"
 						>Efternamn</label
-					><input id="efternamn" type="text" v-model="form.efternamn" />
-					<label for="fornamn">Epost</label>
-					<input id="email" type="email" v-model="form.email" />
-					<label id="losenord" for="fornamn">Lösenord</label>
-					<input id="losenord" type="password" v-model="form.password" />
+					><input placeholder="Efternamn" id="efternamn" type="text" v-model="form.efternamn" />
+					<label for="email">Epost</label>
+					<input placeholder="Epost" id="email" type="email" v-model="form.email" />
+					<label for="losenord">Lösenord</label>
+					<input placeholder="Lösenord" id="losenord" type="password" v-model="form.password" />
 					<input
 						id="submit"
 						type="submit"
