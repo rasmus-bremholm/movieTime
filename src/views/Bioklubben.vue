@@ -28,7 +28,7 @@ export default defineComponent({
 	methods: {
 		handleSubmit(event: Event) {
 			event.preventDefault();
-			console.log("Sudmitted");
+			console.log("Submitted");
 		},
 	},
 });
