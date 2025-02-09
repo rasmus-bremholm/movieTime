@@ -9,12 +9,16 @@ export default defineComponent({
 	},
 	emits: ["city-name"],
 	data() {
-		return { city: null, modalOpen: false };
+		return { city: "", modalOpen: false };
 	},
 	methods: {
 		expandModal() {
 			// Flip floppar för att öppna och stänga
 			this.modalOpen = !this.modalOpen;
+		},
+		selectCity(city: string) {
+			this.city = city;
+			this.$emit("city-name", city);
 		},
 	},
 });
@@ -34,11 +38,11 @@ export default defineComponent({
 				<button @click="expandModal">{{ city || "Välj Stad" }}</button>
 				<div v-if="modalOpen">
 					<h3>Välj din stad</h3>
-					<li>Stockholm</li>
-					<li>Göteborg</li>
-					<li>Borås</li>
-					<li>Mölndal</li>
-					<li>Åmål</li>
+					<li @click="selectCity('Stockholm')">Stockholm</li>
+					<li @click="selectCity('Göteborg')">Göteborg</li>
+					<li @click="selectCity('Borås')">Borås</li>
+					<li @click="selectCity('Mölndal')">Mölndal</li>
+					<li @click="selectCity('Åmål')">Åmål</li>
 				</div>
 			</div>
 		</div>

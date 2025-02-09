@@ -9,18 +9,26 @@ export default defineComponent({
 		Movies,
 		Navbar,
 	},
+	methods: {
+		updateCity(){
+			
+		}
+	}
 });
 </script>
 
 <template>
 	<Navbar />
 	<div class="container-paddings">
+		<div id="title-container"><h2 @city-name="updateCity">Filmer i Göteborg</h2></div>
 		<Movies />
 	</div>
 </template>
 
 <style scoped>
-
+#title-container {
+	padding-bottom: 1.5rem;
+}
 .container-paddings {
 	display: flex;
 	flex-direction: column;
