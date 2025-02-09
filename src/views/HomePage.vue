@@ -10,10 +10,10 @@ export default defineComponent({
 		Navbar,
 	},
 	methods: {
-		updateCity(){
-			
-		}
-	}
+		updateCity() {
+			//! HÄR SKA DU SKRIVA IMORGON MÅNDAG!
+		},
+	},
 });
 </script>
 
