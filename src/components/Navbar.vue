@@ -7,15 +7,21 @@ export default defineComponent({
 	components: {
 		City,
 	},
+	emits: ["city-name"],
 	data() {
-		return { city: null };
+		return { city: null, modalOpen: false };
+	},
+	methods: {
+		expandModal() {
+			// Flip floppar för att öppna och stänga
+			this.modalOpen = !this.modalOpen;
+		},
 	},
 });
 </script>
 <template>
 	<nav>
 		<div class="navbar-content">
-			<p>Version: 0.0.4 2024</p>
 			<p>Logo</p>
 			<router-link to="/"><li>Upptäck</li></router-link>
 			<router-link to="/bioklubben"><li>Bioklubben</li></router-link>
@@ -25,7 +31,15 @@ export default defineComponent({
 						Logga in<span class="material-symbols-outlined"> person </span>
 					</li></router-link
 				>
-				<router-link to="/"><li>Stad</li></router-link>
+				<button @click="expandModal">{{ city || "Välj Stad" }}</button>
+				<div v-if="modalOpen">
+					<h3>Välj din stad</h3>
+					<li>Stockholm</li>
+					<li>Göteborg</li>
+					<li>Borås</li>
+					<li>Mölndal</li>
+					<li>Åmål</li>
+				</div>
 			</div>
 		</div>
 	</nav>
