@@ -48,3 +48,9 @@ li {
 #app {
 	margin: 0 auto;
 }
+
+@media (max-width: 1024px) {
+	#app {
+		padding: 0 2rem;
+	}
+}

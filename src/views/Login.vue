@@ -11,6 +11,14 @@ export default defineComponent({
 </script>
 <template>
 	<Navbar />
-	<p>Login</p>
+	<main>
+		<div id="login-container">
+			<form>
+				<input type="text" name="" id="name" />
+				<input type="text" name="" id="password" />
+				<input type="submit" value="Logga In" />
+			</form>
+		</div>
+	</main>
 </template>
 <style scoped></style>

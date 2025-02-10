@@ -34,7 +34,7 @@ export default defineComponent({
 		} finally {
 			this.loading = false;
 			// Finally set loading state to false.
-			console.log(this.movies);
+			//console.log(this.movies);
 		}
 	},
 });
@@ -42,7 +42,6 @@ export default defineComponent({
 
 <template>
 	<div class="container">
-		<div id="title-container"><h2>Filmer i Göteborg</h2></div>
 		<div v-if="loading">
 			<div class="grid-container">
 				<SkeletonCard v-for="n in 20" :key="n" />
@@ -66,9 +65,6 @@ export default defineComponent({
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-}
-#title-container {
-	padding-bottom: 1.5rem;
 }
 
 .grid-container {
