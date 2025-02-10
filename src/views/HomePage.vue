@@ -9,18 +9,24 @@ export default defineComponent({
 		Movies,
 		Navbar,
 	},
+	data() {
+		return { selectedCity: "" };
+	},
 	methods: {
-		updateCity() {
-			//! HÄR SKA DU SKRIVA IMORGON MÅNDAG!
+		cityName(city: string) {
+			console.log(city);
+			this.selectedCity = city;
 		},
 	},
 });
 </script>
 
 <template>
-	<Navbar />
+	<Navbar @city-name="cityName" />
 	<div class="container-paddings">
-		<div id="title-container"><h2 @city-name="updateCity">Filmer i Göteborg</h2></div>
+		<div id="title-container">
+			<h2>Filmer i {{ selectedCity || "din hemstad!" }}</h2>
+		</div>
 		<Movies />
 	</div>
 </template>

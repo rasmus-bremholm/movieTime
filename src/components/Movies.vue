@@ -42,7 +42,6 @@ export default defineComponent({
 
 <template>
 	<div class="container">
-
 		<div v-if="loading">
 			<div class="grid-container">
 				<SkeletonCard v-for="n in 20" :key="n" />
@@ -67,7 +66,6 @@ export default defineComponent({
 	flex-direction: column;
 	justify-content: center;
 }
-
 
 .grid-container {
 	display: grid;

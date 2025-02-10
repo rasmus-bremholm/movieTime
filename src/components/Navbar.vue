@@ -19,6 +19,7 @@ export default defineComponent({
 		selectCity(city: string) {
 			this.city = city;
 			this.$emit("city-name", city);
+			//console.log(city) Detta funkar. Den loggar rätt.
 		},
 	},
 });
@@ -27,7 +28,7 @@ export default defineComponent({
 	<nav>
 		<div class="navbar-content">
 			<p>Logo</p>
-			<router-link to="/"><li>Upptäck</li></router-link>
+			<router-link to="/"><li>Filmer</li></router-link>
 			<router-link to="/bioklubben"><li>Bioklubben</li></router-link>
 			<div id="loginSection">
 				<router-link to="/login"
