@@ -19,7 +19,8 @@ export default defineComponent({
 		selectCity(city: string) {
 			this.city = city;
 			this.$emit("city-name", city);
-			//console.log(city) Detta funkar. Den loggar rätt.
+			sessionStorage.setItem("selectedCity", city);
+			this.expandModal();
 		},
 	},
 });
@@ -37,7 +38,7 @@ export default defineComponent({
 					</li></router-link
 				>
 				<button @click="expandModal">{{ city || "Välj Stad" }}</button>
-				<div v-if="modalOpen">
+				<div class="modal" v-if="modalOpen">
 					<h3>Välj din stad</h3>
 					<li @click="selectCity('Stockholm')">Stockholm</li>
 					<li @click="selectCity('Göteborg')">Göteborg</li>
@@ -51,10 +52,33 @@ export default defineComponent({
 </template>
 
 <style scoped>
+nav {
+	position: relative;
+}
+button {
+	background: red;
+	border: none;
+	padding: 1rem 4rem;
+	border-radius: var(--card-border-radius);
+}
+
+.modal {
+	position: absolute;
+	top: 5rem;
+	right: 2.5rem;
+	z-index: 999;
+	background-color: hsl(0, 0%, 20%);
+	padding: 2rem;
+	border-radius: var(--card-border-radius);
+}
+.modal li:hover {
+	color: hsl(0, 0%, 95%);
+}
+
 .navbar-content {
 	min-height: 72px;
 	display: grid;
-	grid-template-columns: repeat(5, minmax(0, 1fr));
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 	align-items: center;
 	justify-items: center;
 }
@@ -78,8 +102,8 @@ li {
 }
 #login {
 	border: 1px solid white;
-	padding: 4px 16px;
-	border-radius: 16px;
+	padding: 1rem 4rem;
+	border-radius: var(--card-border-radius);
 }
 #login:hover {
 	border: 1px solid hsl(0, 0%, 60%);
