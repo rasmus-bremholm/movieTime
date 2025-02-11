@@ -14,6 +14,7 @@ export default defineComponent({
 	},
 	created() {
 		this.selectedCity = "din hemstad!";
+		this.getCityFromStorage();
 	},
 	methods: {
 		getCityFromStorage() {

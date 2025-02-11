@@ -53,6 +53,7 @@ export default defineComponent({
 
 <style scoped>
 nav {
+	width: 100%;
 	position: relative;
 }
 button {
