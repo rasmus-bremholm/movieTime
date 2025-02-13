@@ -1,14 +1,15 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import Navbar from "../components/Navbar.vue";
 
 export default defineComponent({
 	name: "Bioklubben",
-	components: {
-		Navbar,
-	},
+
 	data() {
-		return { form: { fornamn: "", efternamn: "", email: "", password: "" }, disabeled: true };
+		return {
+			form: { fornamn: "", efternamn: "", email: "", password: "" },
+			disabeled: true,
+			registrerad: false,
+		};
 	},
 	watch: {
 		form: {
@@ -29,32 +30,40 @@ export default defineComponent({
 		handleSubmit(event: Event) {
 			event.preventDefault();
 			console.log("Submitted");
+			this.registrerad = true;
 		},
 	},
 });
 </script>
 <template>
-	<Navbar />
 	<main>
+		<div id="backdrop-container">
+			<img src="../assets/medlem.webp" alt="" id="backdrop-image" />
+		</div>
+		<!-- Inte Viktig bild, lämnar Alt tom-->
 		<div id="wrapper">
 			<div id="info-container">
 				<h1>Välkommen till BioKlubben!</h1>
-				<p class="tagline">
-					Om du älskar filmer och att gå på bio är detta medlemsskapet för dig. Som medlem samlar du
-					poäng på varje biobesök och alla köp i butiken!
-				</p>
-				<p>
-					Som medlem tjänar du poäng på din biobiljett och alla köp i kiosken. Du kan använda dina
-					intjänade poäng till att köpa biobiljetter och annat gott ifrån vår butik.
-				</p>
-				<h2>Personliga erbjudanden och premiärer</h2>
-				<p>
-					Du som medlem i bioklubben får förmåner utöver din poängsamling. Du kommer få personliga
-					erbjudanden såsom rabbater, både på film och snax. Men även inbjudningar till premiärer
-					och förhandsvisningar av nya filmer.
-				</p>
+				<div>
+					<p class="tagline">
+						Om du älskar filmer och att gå på bio är detta medlemsskapet för dig. Som medlem samlar
+						du poäng på varje biobesök och alla köp i butiken!
+					</p>
+					<p>
+						Som medlem tjänar du poäng på din biobiljett och alla köp i kiosken. Du kan använda dina
+						intjänade poäng till att köpa biobiljetter och annat gott ifrån vår butik.
+					</p>
+				</div>
+				<div>
+					<h2>Personliga erbjudanden och premiärer</h2>
+					<p>
+						Du som medlem i bioklubben får förmåner utöver din poängsamling. Du kommer få personliga
+						erbjudanden såsom rabbater, både på film och snax. Men även inbjudningar till premiärer
+						och förhandsvisningar av nya filmer.
+					</p>
+				</div>
 			</div>
-			<div id="form-container">
+			<div id="form-container" v-if="registrerad === false">
 				<h2>Registrera dig som medlem.</h2>
 				<form>
 					<label for="fornamn">Förnamn</label>
@@ -73,6 +82,9 @@ export default defineComponent({
 						:disabled="disabeled"
 						@submit="handleSubmit" />
 				</form>
+			</div>
+			<div v-else>
+				<p>Tack för att du är registrerad!</p>
 			</div>
 		</div>
 	</main>
@@ -99,7 +111,13 @@ input {
 
 #wrapper {
 	max-width: 1024px;
-	padding-top: 2rem;
+	padding-bottom: 5rem;
+	margin-top: 2rem;
+}
+#info-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 #submit {
 	margin-top: 2rem;
@@ -117,5 +135,37 @@ input {
 }
 #submit:disabled:hover {
 	background-color: rgb(124, 123, 123);
+}
+
+/* Allt som har med backdroppen här. */
+#backdrop-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	opacity: 20%;
+}
+
+#backdrop-container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	overflow: hidden;
+	z-index: -999;
+}
+#backdrop-container::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+@media (max-width: 1024px) {
+	#wrapper {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
 }
 </style>

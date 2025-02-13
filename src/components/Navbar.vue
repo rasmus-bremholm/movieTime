@@ -28,7 +28,7 @@ export default defineComponent({
 <template>
 	<nav>
 		<div class="navbar-content">
-			<p>Logo</p>
+			<img src="../assets/movietime-logo.svg" alt="movie time logo" />
 			<router-link to="/"><li>Filmer</li></router-link>
 			<router-link to="/bioklubben"><li>Bioklubben</li></router-link>
 			<div id="loginSection">
@@ -53,6 +53,7 @@ export default defineComponent({
 
 <style scoped>
 nav {
+	max-width: 100svw;
 	position: relative;
 }
 button {
@@ -60,6 +61,9 @@ button {
 	border: none;
 	padding: 1rem 4rem;
 	border-radius: var(--card-border-radius);
+}
+img {
+	height: 32px;
 }
 
 .modal {
@@ -76,9 +80,9 @@ button {
 }
 
 .navbar-content {
-	min-height: 72px;
+	max-height: 72px;
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(4, auto);
 	align-items: center;
 	justify-items: center;
 }

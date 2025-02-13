@@ -72,4 +72,22 @@ export default defineComponent({
 	grid-template-columns: repeat(4, 246px);
 	gap: 2rem;
 }
+
+@media (max-width: 1100px) {
+	.grid-container {
+		grid-template-columns: repeat(3, 246px);
+	}
+}
+
+@media (max-width: 810px) {
+	.grid-container {
+		grid-template-columns: repeat(2, 246px);
+	}
+}
+
+@media (max-width: 540px) {
+	.grid-container {
+		grid-template-columns: repeat(1, 246px);
+	}
+}
 </style>

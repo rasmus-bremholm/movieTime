@@ -3,13 +3,11 @@ import { defineComponent } from "vue";
 import { API_OPTIONS } from "../utils/apiOptions";
 import axios from "axios";
 import { Movie } from "../types/movieInterfaces";
-import Navbar from "../components/Navbar.vue";
 
 // const url = 'https://api.themoviedb.org/3/movie/movie_id?language=en-US';
 
 export default defineComponent({
 	name: "Movie",
-	components: { Navbar },
 	data() {
 		return {
 			movie: {} as Movie,
@@ -35,12 +33,10 @@ export default defineComponent({
 			this.error = true;
 		} finally {
 			this.loading = false;
-			console.log(this.movie);
+			//console.log(this.movie);
 		}
 	},
 	computed: {
-		// Ska vi justera poster path här i en funktion??
-
 		formatTitle(): string {
 			/*Om filmtitlen är för lång (såg ett exempel) så kortar vi ner den här.*/
 			if (this.movie.title && this.movie.title.length > 20) {
@@ -53,7 +49,6 @@ export default defineComponent({
 });
 </script>
 <template>
-	<Navbar />
 	<div id="backdrop-container">
 		<img
 			v-if="!loading"
@@ -131,6 +126,8 @@ export default defineComponent({
 	display: grid;
 	grid-template-columns: auto 2fr;
 	grid-template-rows: 1fr;
+	padding-right: 5rem;
+	padding-left: 5rem;
 }
 #movie-info-container {
 	padding: 1rem;
@@ -150,5 +147,25 @@ export default defineComponent({
 
 #posterImg {
 	width: 200px;
+}
+
+button {
+	margin-top: 2rem;
+	background-color: hsl(0, 70%, 50%);
+	border-radius: 1.5rem;
+	border: none;
+	padding: 0.5rem 2rem;
+}
+@media (max-width: 550px) {
+	#movie-details {
+		grid-template-columns: auto;
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+	#movie-poster-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
 </style>
