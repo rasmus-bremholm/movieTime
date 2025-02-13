@@ -3,13 +3,11 @@ import { defineComponent } from "vue";
 import { API_OPTIONS } from "../utils/apiOptions";
 import axios from "axios";
 import { Movie } from "../types/movieInterfaces";
-import Navbar from "../components/Navbar.vue";
 
 // const url = 'https://api.themoviedb.org/3/movie/movie_id?language=en-US';
 
 export default defineComponent({
 	name: "Movie",
-	components: { Navbar },
 	data() {
 		return {
 			movie: {} as Movie,
@@ -53,7 +51,6 @@ export default defineComponent({
 });
 </script>
 <template>
-	<Navbar />
 	<div id="backdrop-container">
 		<img
 			v-if="!loading"
@@ -131,6 +128,8 @@ export default defineComponent({
 	display: grid;
 	grid-template-columns: auto 2fr;
 	grid-template-rows: 1fr;
+	padding-right: 5rem;
+	padding-left: 5rem;
 }
 #movie-info-container {
 	padding: 1rem;
@@ -150,5 +149,12 @@ export default defineComponent({
 
 #posterImg {
 	width: 200px;
+}
+
+@media (max-width: 676px) {
+	#movie-details {
+		padding-right: 0.5rem;
+		padding-left: 0.5rem;
+	}
 }
 </style>

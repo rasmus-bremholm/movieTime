@@ -1,12 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import Navbar from "../components/Navbar.vue";
 
 export default defineComponent({
 	name: "Bioklubben",
-	components: {
-		Navbar,
-	},
+
 	data() {
 		return { form: { fornamn: "", efternamn: "", email: "", password: "" }, disabeled: true };
 	},
@@ -34,8 +31,8 @@ export default defineComponent({
 });
 </script>
 <template>
-	<Navbar />
 	<main>
+		<img src="" alt="" />
 		<div id="wrapper">
 			<div id="info-container">
 				<h1>Välkommen till BioKlubben!</h1>
