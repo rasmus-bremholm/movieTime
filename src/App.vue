@@ -42,7 +42,7 @@ Vi bara kör egentligen.
 	<Navbar @city-name="cityName" />
 	<div id="title-container">
 		<div id="flex-container">
-			<h2>Filmer i {{ selectedCity || getCityFromStorage() }}</h2>
+			<h2>Vald Stad: {{ selectedCity || getCityFromStorage() }}</h2>
 		</div>
 	</div>
 	<RouterView />

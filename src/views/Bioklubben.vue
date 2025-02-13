@@ -5,7 +5,11 @@ export default defineComponent({
 	name: "Bioklubben",
 
 	data() {
-		return { form: { fornamn: "", efternamn: "", email: "", password: "" }, disabeled: true };
+		return {
+			form: { fornamn: "", efternamn: "", email: "", password: "" },
+			disabeled: true,
+			registrerad: false,
+		};
 	},
 	watch: {
 		form: {
@@ -26,13 +30,17 @@ export default defineComponent({
 		handleSubmit(event: Event) {
 			event.preventDefault();
 			console.log("Submitted");
+			this.registrerad = true;
 		},
 	},
 });
 </script>
 <template>
 	<main>
-		<img src="" alt="" />
+		<div id="backdrop-container">
+			<img src="../assets/medlem.webp" alt="" id="backdrop-image" />
+		</div>
+		<!-- Inte Viktig bild, lämnar Alt tom-->
 		<div id="wrapper">
 			<div id="info-container">
 				<h1>Välkommen till BioKlubben!</h1>
@@ -51,7 +59,7 @@ export default defineComponent({
 					och förhandsvisningar av nya filmer.
 				</p>
 			</div>
-			<div id="form-container">
+			<div id="form-container" v-if="registrerad === false">
 				<h2>Registrera dig som medlem.</h2>
 				<form>
 					<label for="fornamn">Förnamn</label>
@@ -70,6 +78,9 @@ export default defineComponent({
 						:disabled="disabeled"
 						@submit="handleSubmit" />
 				</form>
+			</div>
+			<div v-else>
+				<p>Tack för att du är registrerad!</p>
 			</div>
 		</div>
 	</main>
@@ -96,7 +107,7 @@ input {
 
 #wrapper {
 	max-width: 1024px;
-	padding-top: 2rem;
+	padding-bottom: 5rem;
 }
 #submit {
 	margin-top: 2rem;
@@ -114,5 +125,36 @@ input {
 }
 #submit:disabled:hover {
 	background-color: rgb(124, 123, 123);
+}
+
+/* Allt som har med backdroppen här. */
+#backdrop-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	opacity: 20%;
+}
+
+#backdrop-container {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	z-index: -999;
+}
+#backdrop-container::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+@media (max-width: 1024px) {
+	#wrapper {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
 }
 </style>

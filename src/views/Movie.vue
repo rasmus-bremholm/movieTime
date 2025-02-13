@@ -33,12 +33,10 @@ export default defineComponent({
 			this.error = true;
 		} finally {
 			this.loading = false;
-			console.log(this.movie);
+			//console.log(this.movie);
 		}
 	},
 	computed: {
-		// Ska vi justera poster path här i en funktion??
-
 		formatTitle(): string {
 			/*Om filmtitlen är för lång (såg ett exempel) så kortar vi ner den här.*/
 			if (this.movie.title && this.movie.title.length > 20) {
