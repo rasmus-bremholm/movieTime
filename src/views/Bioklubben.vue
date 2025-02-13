@@ -44,20 +44,24 @@ export default defineComponent({
 		<div id="wrapper">
 			<div id="info-container">
 				<h1>Välkommen till BioKlubben!</h1>
-				<p class="tagline">
-					Om du älskar filmer och att gå på bio är detta medlemsskapet för dig. Som medlem samlar du
-					poäng på varje biobesök och alla köp i butiken!
-				</p>
-				<p>
-					Som medlem tjänar du poäng på din biobiljett och alla köp i kiosken. Du kan använda dina
-					intjänade poäng till att köpa biobiljetter och annat gott ifrån vår butik.
-				</p>
-				<h2>Personliga erbjudanden och premiärer</h2>
-				<p>
-					Du som medlem i bioklubben får förmåner utöver din poängsamling. Du kommer få personliga
-					erbjudanden såsom rabbater, både på film och snax. Men även inbjudningar till premiärer
-					och förhandsvisningar av nya filmer.
-				</p>
+				<div>
+					<p class="tagline">
+						Om du älskar filmer och att gå på bio är detta medlemsskapet för dig. Som medlem samlar
+						du poäng på varje biobesök och alla köp i butiken!
+					</p>
+					<p>
+						Som medlem tjänar du poäng på din biobiljett och alla köp i kiosken. Du kan använda dina
+						intjänade poäng till att köpa biobiljetter och annat gott ifrån vår butik.
+					</p>
+				</div>
+				<div>
+					<h2>Personliga erbjudanden och premiärer</h2>
+					<p>
+						Du som medlem i bioklubben får förmåner utöver din poängsamling. Du kommer få personliga
+						erbjudanden såsom rabbater, både på film och snax. Men även inbjudningar till premiärer
+						och förhandsvisningar av nya filmer.
+					</p>
+				</div>
 			</div>
 			<div id="form-container" v-if="registrerad === false">
 				<h2>Registrera dig som medlem.</h2>
@@ -108,6 +112,12 @@ input {
 #wrapper {
 	max-width: 1024px;
 	padding-bottom: 5rem;
+	margin-top: 2rem;
+}
+#info-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 #submit {
 	margin-top: 2rem;
@@ -136,7 +146,8 @@ input {
 }
 
 #backdrop-container {
-	position: relative;
+	position: absolute;
+	top: 0;
 	width: 100%;
 	overflow: hidden;
 	z-index: -999;
