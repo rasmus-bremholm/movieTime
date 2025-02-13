@@ -149,10 +149,23 @@ export default defineComponent({
 	width: 200px;
 }
 
-@media (max-width: 676px) {
+button {
+	margin-top: 2rem;
+	background-color: hsl(0, 70%, 50%);
+	border-radius: 1.5rem;
+	border: none;
+	padding: 0.5rem 2rem;
+}
+@media (max-width: 550px) {
 	#movie-details {
-		padding-right: 0.5rem;
-		padding-left: 0.5rem;
+		grid-template-columns: auto;
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+	#movie-poster-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }
 </style>
